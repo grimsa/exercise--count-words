@@ -23,8 +23,15 @@ repositories {
 	mavenCentral()
 }
 
-
 dependencies {
-	implementation('org.springframework.boot:spring-boot-starter-integration')
-	testImplementation('org.springframework.boot:spring-boot-starter-test')
+	implementation('org.springframework.boot:spring-boot-starter')
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'junit', module: 'junit'
+	}
+	testImplementation('org.junit.jupiter:junit-jupiter-api:5.3.2')
+	testRuntime('org.junit.jupiter:junit-jupiter-engine:5.3.2')
+}
+
+test {
+	useJUnitPlatform()
 }
